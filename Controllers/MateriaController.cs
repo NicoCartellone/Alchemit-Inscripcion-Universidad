@@ -1,0 +1,97 @@
+﻿using Inscripcion_Universidad.Models;
+using Inscripcion_Universidad.Models.Dominio;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+
+namespace Inscripcion_Universidad.Controllers
+{
+    public class MateriaController : Controller
+    {
+        private ApplicationDbContext db = new ApplicationDbContext();
+        // GET: Materia
+        public ActionResult Index()
+        {
+            return View(db.Materia.ToList());
+        }
+
+        // GET: Create materia
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        //POST: Create materia
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id, NombreMateria, IdCarrera, Semestre")] Materia Materia)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Materia.Add(Materia);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(Materia);
+        }
+
+        //GET: Edit materia
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Materia Materia = db.Materia.Find(id);
+            if (Materia == null)
+            {
+                return HttpNotFound();
+            }
+            return View(Materia);
+        }
+
+        //POST: Edit materia
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id, NombreMateria, IdCarrera, Semestre")] Materia Materia)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(Materia).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(Materia);
+        }
+
+        //GET: Delete materia
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Materia Materia = db.Materia.Find(id);
+            if (Materia == null)
+            {
+                return HttpNotFound();
+            }
+            return View(Materia);
+        }
+
+        //POST: Delete materia
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Materia Materia = db.Materia.Find(id);
+            db.Materia.Remove(Materia);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+    }
+}
