@@ -15,4 +15,4 @@ namespace Inscripcion_Universidad.Models.Dominio
         public virtual Carrera Carrera { get; set; }
         public virtual ICollection<MateriaPorCorrelativa> MateriaPorCorrelativas { get; set; }
     }
-}
+} 
