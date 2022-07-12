@@ -30,10 +30,10 @@ namespace Inscripcion_Universidad.Models
         {
             return new ApplicationDbContext();
         }
-        public DbSet<Materia> Materia { get; set; }
-        public DbSet<Correlativa> Correlativa { get; set; }
-        public DbSet<Carrera> Carrera { get; set; }
-        public DbSet<MateriaPorCorrelativa> MateriaPorCorrelativa { get; set; }
-        public DbSet<Estudiante> Estudiante { get; set; }
+        public DbSet<Materia> Materias { get; set; }
+        public DbSet<Correlativa> Correlativas { get; set; }
+        public DbSet<Carrera> Carreras { get; set; }
+        public DbSet<MateriaPorCorrelativa> MateriaPorCorrelativas { get; set; }
+        public DbSet<Estudiante> Estudiantes { get; set; }
     }
 }

@@ -15,22 +15,22 @@
 
 
 <h2>Creación y listado de roles</h2>
-<a href="@Url.Action("UsersRoles", "ManageUsers")" title="AssignRole">Asignar roles</a>
+<a href="@Url.Action("UsersRoles", "ManageRoles")" title="Assign Role">Asignar roles</a>
 <hr />
 
-@if (!String.IsNullOrEmpty(result))
+@*@if (!String.IsNullOrEmpty(result))
 {
     <div class="alert alert-success alert-dismissible" role="alert">
         <button type="button" class="btn-primary" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>Role created.</strong> Role <strong>@result</strong> has been succesfully created. To assign it you must go to <a href="@Url.Action("UsersRoles", "ManageUsersProsmart")" class="alert-link">this page</a>
+        <strong>Rol Creado.</strong> Role <strong>@result</strong> has been succesfully created. To assign it you must go to <a href="@Url.Action("UsersRoles", "ManageRoles")" class="alert-link">this page</a>
     </div>
-}
+}*@
 
 <div class="row">
 
     <div class="col-sm-12 col-md-5">
         <h3>Crear Rol</h3>
-        @using (Html.BeginForm("CrearRol", "ManageRoles", FormMethod.Post, new { @role = "form" }))
+        @using (Html.BeginForm("CreateRole", "ManageRoles", FormMethod.Post, new { @role = "form" }))
         {
 
             @Html.AntiForgeryToken()
@@ -41,7 +41,7 @@
                 <input class="form-control" type="text" id="RoleName" name="RoleName" minlength="3" required />
             </div>
 
-            <button class="btn btn-block btn-default" type="submit">@*<span class="glyphicon glyphicon-floppy-save"></span>*@ Crear Rol</button>
+            <button class="btn btn-block btn-primary" type="submit">@*<span class="glyphicon glyphicon-floppy-save"></span>*@ Crear Rol</button>
         }
     </div>
 
@@ -51,7 +51,7 @@
             @foreach (var role in Model)
             {
                 <div class="list-group-item">
-                    <h4>@role.Name <a href="#" class="btn" title="Editar"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a><a href="@Url.Action("DeleteRole","ManageUsersProsmart", new { roleName = role.Name})" class="btn" title="Delete"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></h4>
+                    <h4>@role.Name <a href="@Url.Action("DeleteRole","ManageRoles", new { roleName = role.Name})" class="btn" title="Delete"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></h4>
                 </div>
             }
         </div>

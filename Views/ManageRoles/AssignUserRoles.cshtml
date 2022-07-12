@@ -1,0 +1,57 @@
+﻿@model Inscripcion_Universidad.Models.ViewModels.RolesByUser
+
+
+<!-- Please download this if you want custom controls, if not... do whatever you want-->
+<!-- http://kleinejan.github.io/titatoggle/ -->
+<link href="@Url.Content("~/Content/titatoggle-dist.css")" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Asignar Roles";
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <h3>Roles por usuario</h3>
+        <hr />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 col-sm-12">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <h1>Administrar roles</h1>
+            <h3>@Model.UserName</h3>
+
+            <fieldset>
+
+                <input type="hidden" value="@Model.UserName" name="usuarioName" id="usuarioName" />
+
+                @foreach (var role in Model.RolesUser)
+                {
+
+                    <div class="checkbox checkbox-slider--b-flat checkbox-slider-md">
+                        <label>
+                            <input type="checkbox" name="userRoles" value="@role.RoleName" checked="@role.HasRole"> <span class="toggle-label">@role.RoleName</span>
+                        </label>
+
+                    </div>
+                }
+
+            </fieldset>
+
+            <button class="btn btn-block btn-primary">Guardar</button>
+        }
+        <p><a href="@Url.Action("UsersRoles", "ManageRoles")" title="Back">Volver a la lista</a></p>
+    </div>
+
+</div>
+
+<style>
+    .toggle-label {
+        font-size: 20px;
+        font-weight: lighter;
+    }
+</style>
