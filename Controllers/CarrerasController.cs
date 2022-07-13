@@ -18,8 +18,10 @@ namespace Inscripcion_Universidad.Controllers
         // GET: Carreras
         public ActionResult Index()
         {
-            return View(db.Carrera.ToList());
+            return View(db.Carreras.ToList());
         }
+        
+
 
         // GET: Carreras/Details/5
         public ActionResult Details(Guid? id)
@@ -28,7 +30,7 @@ namespace Inscripcion_Universidad.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Carrera carrera = db.Carrera.Find(id);
+            Carrera carrera = db.Carreras.Find(id);
             if (carrera == null)
             {
                 return HttpNotFound();
@@ -52,7 +54,7 @@ namespace Inscripcion_Universidad.Controllers
             if (ModelState.IsValid)
             {
                 carrera.Id = Guid.NewGuid();
-                db.Carrera.Add(carrera);
+                db.Carreras.Add(carrera);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -67,7 +69,7 @@ namespace Inscripcion_Universidad.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Carrera carrera = db.Carrera.Find(id);
+            Carrera carrera = db.Carreras.Find(id);
             if (carrera == null)
             {
                 return HttpNotFound();
@@ -90,6 +92,31 @@ namespace Inscripcion_Universidad.Controllers
             }
             return View(carrera);
         }
-       
+
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Carrera Carrera = db.Carreras.Find(id);
+            if (Carrera == null)
+            {
+                return HttpNotFound();
+            }
+            return View(Carrera);
+        }
+
+        //POST: Delete materia
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Carrera Carrera = db.Carreras.Find(id);
+            db.Carreras.Remove(Carrera);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }

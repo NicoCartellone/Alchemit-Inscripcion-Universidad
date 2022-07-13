@@ -16,7 +16,7 @@ namespace Inscripcion_Universidad.Controllers
         // GET: Materia
         public ActionResult Index()
         {
-            return View(db.Materia.ToList());
+            return View(db.Materias.ToList());
         }
 
         // GET: Create materia
@@ -32,7 +32,7 @@ namespace Inscripcion_Universidad.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Materia.Add(Materia);
+                db.Materias.Add(Materia);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -46,7 +46,7 @@ namespace Inscripcion_Universidad.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Materia Materia = db.Materia.Find(id);
+            Materia Materia = db.Materias.Find(id);
             if (Materia == null)
             {
                 return HttpNotFound();
@@ -75,7 +75,7 @@ namespace Inscripcion_Universidad.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Materia Materia = db.Materia.Find(id);
+            Materia Materia = db.Materias.Find(id);
             if (Materia == null)
             {
                 return HttpNotFound();
@@ -88,8 +88,8 @@ namespace Inscripcion_Universidad.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Materia Materia = db.Materia.Find(id);
-            db.Materia.Remove(Materia);
+            Materia Materia = db.Materias.Find(id);
+            db.Materias.Remove(Materia);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

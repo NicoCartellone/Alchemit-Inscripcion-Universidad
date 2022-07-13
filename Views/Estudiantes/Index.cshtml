@@ -4,48 +4,19 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h1>Bienvenido/a</h1>
+<br />
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Apellido)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdCarrera)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdMateria)
-        </th>
-        <th></th>
-    </tr>
+<h2>Opciones disponibles:</h2>
+<br />
+<button type="button" class="btn btn-primary btn-lg btn-block"> Inscribirse a una materia</button>
+<br />
+<button type="button" class="btn btn-primary btn-lg btn-block">@Html.ActionLink("Inscribirse a una carrera", "Inscribirse", "Estudiante", new { style = "color:white; text-decoration: none" })</button>
+<br />
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Apellido)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdCarrera)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdMateria)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+<button type="button" class="btn btn-primary btn-lg btn-block"> Ver Historial académico</button>
 
-</table>
+<br />
+<button type="button" class="btn btn-primary btn-lg btn-block"> Solicitar un certificado </button>
+
+<!--Certificado de examenes aprobados y de examenes rendidos-->

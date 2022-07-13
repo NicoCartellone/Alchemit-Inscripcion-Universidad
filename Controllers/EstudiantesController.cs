@@ -18,9 +18,11 @@ namespace Inscripcion_Universidad.Controllers
         // GET: Estudiantes
         public ActionResult Index()
         {
-            return View(db.Estudiante.ToList());
+            return View();
         }
 
+
+       
         // GET: Estudiantes/Details/5
         public ActionResult Details(Guid? id)
         {
@@ -28,7 +30,7 @@ namespace Inscripcion_Universidad.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Estudiante estudiante = db.Estudiante.Find(id);
+            Estudiante estudiante = db.Estudiantes.Find(id);
             if (estudiante == null)
             {
                 return HttpNotFound();
@@ -37,8 +39,9 @@ namespace Inscripcion_Universidad.Controllers
         }
 
         // GET: Estudiantes/Create
-        public ActionResult Create()
+        public ActionResult Inscribirse()
         {
+            ViewBag.Carreras = db.Carreras.ToList();
             return View();
         }
 
@@ -47,12 +50,12 @@ namespace Inscripcion_Universidad.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,Apellido,IdCarrera,IdMateria")] Estudiante estudiante)
+        public ActionResult Inscribirse([Bind(Include = "Id,Nombre,Apellido,IdCarrera")] Estudiante estudiante)
         {
             if (ModelState.IsValid)
             {
                 estudiante.Id = Guid.NewGuid();
-                db.Estudiante.Add(estudiante);
+                db.Estudiantes.Add(estudiante);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -67,7 +70,7 @@ namespace Inscripcion_Universidad.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Estudiante estudiante = db.Estudiante.Find(id);
+            Estudiante estudiante = db.Estudiantes.Find(id);
             if (estudiante == null)
             {
                 return HttpNotFound();
@@ -98,7 +101,7 @@ namespace Inscripcion_Universidad.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Estudiante estudiante = db.Estudiante.Find(id);
+            Estudiante estudiante = db.Estudiantes.Find(id);
             if (estudiante == null)
             {
                 return HttpNotFound();
@@ -111,8 +114,8 @@ namespace Inscripcion_Universidad.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            Estudiante estudiante = db.Estudiante.Find(id);
-            db.Estudiante.Remove(estudiante);
+            Estudiante estudiante = db.Estudiantes.Find(id);
+            db.Estudiantes.Remove(estudiante);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
