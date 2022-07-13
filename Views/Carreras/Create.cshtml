@@ -1,4 +1,4 @@
-﻿@model Inscripcion_Universidad.Models.Dominio.Carrera
+﻿@model Inscripcion_Universidad.Models.ViewModels.Carreras.CarrerasViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -16,7 +16,8 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.NombreCarrera, htmlAttributes: new { @class = "control-label col-md-2" })
+            @*@Html.LabelFor(model => model.NombreCarrera, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <label class="control-label col-md-2">Carrera</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.NombreCarrera, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NombreCarrera, "", new { @class = "text-danger" })

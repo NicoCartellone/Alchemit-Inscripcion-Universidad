@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Inscripcion_Universidad.Controllers
 {
-    [ValidarSesion]
+    
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -15,6 +15,8 @@ namespace Inscripcion_Universidad.Controllers
             return View();
         }
 
+        [ValidarSesion]
+        [Authorize(Roles = "Estudiante")]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -22,10 +24,20 @@ namespace Inscripcion_Universidad.Controllers
             return View();
         }
 
+        [ValidarSesion]
+        [Authorize(Roles = "Profesor")]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        [ValidarSesion]
+        [Authorize(Roles = "Admin")]
+        public ActionResult Administradores()
+        {
+   
             return View();
         }
     }

@@ -10,7 +10,7 @@ namespace Inscripcion_Universidad.Models.Dominio
     {
         [Required]
         public string NombreCorrelativa { get; set; }
-        public int IdCarrera { get; set; }
+        public Guid IdCarrera { get; set; }
 
         public virtual Carrera Carrera { get; set; }
         public virtual ICollection<MateriaPorCorrelativa> MateriaPorCorrelativas { get; set; }

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Inscripcion_Universidad.Models;
 using Inscripcion_Universidad.Models.Dominio;
+using Inscripcion_Universidad.Models.ViewModels.Carreras;
 
 namespace Inscripcion_Universidad.Controllers
 {
@@ -18,39 +19,29 @@ namespace Inscripcion_Universidad.Controllers
         // GET: Carreras
         public ActionResult Index()
         {
-            return View(db.Carreras.ToList());
-        }
-
-        // GET: Carreras/Details/5
-        public ActionResult Details(Guid? id)
-        {
-            if (id == null)
+            List<Carrera> Carreras = db.Carreras.ToList();
+            List<CarrerasListaViewModel> model = new List<CarrerasListaViewModel>();
+            foreach(Carrera Carrera in Carreras)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                model.Add(new CarrerasListaViewModel { Id = Carrera.Id, NombreCarrera = Carrera.NombreCarrera });
             }
-            Carrera carrera = db.Carreras.Find(id);
-            if (carrera == null)
-            {
-                return HttpNotFound();
-            }
-            return View(carrera);
+            return View(model);
         }
 
         // GET: Carreras/Create
         public ActionResult Create()
         {
-            return View();
+            return View(new CarrerasViewModel());
         }
 
         // POST: Carreras/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,NombreCarrera")] Carrera carrera)
+        public ActionResult Create(CarrerasViewModel carrera)
         {
             if (ModelState.IsValid)
             {
-                carrera.Id = Guid.NewGuid();
-                db.Carreras.Add(carrera);
+                db.Carreras.Add(carrera.ToEntity());
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -59,58 +50,59 @@ namespace Inscripcion_Universidad.Controllers
         }
 
         // GET: Carreras/Edit/5
-        public ActionResult Edit(Guid? id)
+        public ActionResult Edit(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Carrera carrera = db.Carreras.Find(id);
-            if (carrera == null)
-            {
-                return HttpNotFound();
-            }
-            return View(carrera);
+            CarrerasViewModel model = new CarrerasViewModel(carrera);
+           
+            return View(model);
         }
 
         // POST: Carreras/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,NombreCarrera")] Carrera carrera)
+        public ActionResult Edit(CarrerasViewModel model)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(carrera).State = EntityState.Modified;
+                Carrera Carrera = db.Carreras.Find(model.Id);
+                Carrera.NombreCarrera = model.NombreCarrera;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(carrera);
+            return View(model);
         }
 
         // GET: Carreras/Delete/5
-        public ActionResult Delete(Guid? id)
+        public ActionResult Delete(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Carrera carrera = db.Carreras.Find(id);
-            if (carrera == null)
+            CarrerasViewModel model = new CarrerasViewModel(carrera);
+            if( model == null)
             {
                 return HttpNotFound();
             }
-            return View(carrera);
+            return View(model);
         }
 
         // POST: Carreras/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Guid id)
+        public ActionResult DeleteConfirmed(CarrerasViewModel model)
         {
-            Carrera carrera = db.Carreras.Find(id);
-            db.Carreras.Remove(carrera);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+                Carrera carrera = db.Carreras.Find(model.Id);
+                db.Carreras.Remove(carrera);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            
         }
 
         protected override void Dispose(bool disposing)

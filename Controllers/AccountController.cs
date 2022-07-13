@@ -394,6 +394,7 @@ namespace Inscripcion_Universidad.Controllers
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             Session["result"] = null;
+            Session["roles"] = null;
             return RedirectToAction("Index", "Home");
         }
 

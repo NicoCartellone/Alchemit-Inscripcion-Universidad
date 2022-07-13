@@ -6,14 +6,14 @@ namespace Inscripcion_Universidad.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class primeraMigracion : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
+    public sealed partial class primera : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(primeraMigracion));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(primera));
         
         string IMigrationMetadata.Id
         {
-            get { return "202207072311156_primeraMigracion"; }
+            get { return "202207132116215_primera"; }
         }
         
         string IMigrationMetadata.Source

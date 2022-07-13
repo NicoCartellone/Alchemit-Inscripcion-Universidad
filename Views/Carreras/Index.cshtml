@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Inscripcion_Universidad.Models.Dominio.Carrera>
+﻿@model IEnumerable<Inscripcion_Universidad.Models.ViewModels.Carreras.CarrerasListaViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -10,10 +10,10 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table table-striped">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.NombreCarrera)
+            Carrera
         </th>
         <th></th>
     </tr>
@@ -24,9 +24,8 @@
             @Html.DisplayFor(modelItem => item.NombreCarrera)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            <a href="@Url.Action("Edit", "Carreras", new { id = item.Id })" class="btn btn-primary">Editar</a>
+            <a href="@Url.Action("Delete", "Carreras", new { id = item.Id })" class="btn btn-danger">Eliminar</a>
         </td>
     </tr>
 }

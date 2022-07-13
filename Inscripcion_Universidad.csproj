@@ -172,13 +172,12 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ManageRolesController.cs" />
-    <Compile Include="Controllers\MateriasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202207072311156_primeraMigracion.cs" />
-    <Compile Include="Migrations\202207072311156_primeraMigracion.Designer.cs">
-      <DependentUpon>202207072311156_primeraMigracion.cs</DependentUpon>
+    <Compile Include="Migrations\202207132116215_primera.cs" />
+    <Compile Include="Migrations\202207132116215_primera.Designer.cs">
+      <DependentUpon>202207132116215_primera.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -190,8 +189,10 @@
     <Compile Include="Models\Dominio\MateriaPorCorrelativa.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ViewModels\Carreras\CarrerasListaViewModel.cs" />
+    <Compile Include="Models\ViewModels\Carreras\CarrerasViewModel.cs" />
+    <Compile Include="Models\ViewModels\Materias\MateriasViewModel.cs" />
     <Compile Include="Models\ViewModels\Roles\AssignRolesUsersViewData.cs" />
-    <Compile Include="Models\ViewModels\MateriaCorrelativaViewData.cs" />
     <Compile Include="Models\ViewModels\Roles\RolesByUser.cs" />
     <Compile Include="Models\ViewModels\Roles\RoleUserExist.cs" />
     <Compile Include="Models\ViewModels\Roles\UserRolesViewData.cs" />
@@ -232,7 +233,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\About.cshtml">
+      <BrowseToURL>~/Home/About</BrowseToURL>
+    </Content>
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
@@ -260,14 +263,9 @@
     <Content Include="Views\ManageRoles\UsersRoles.cshtml" />
     <Content Include="Views\Carreras\Create.cshtml" />
     <Content Include="Views\Carreras\Delete.cshtml" />
-    <Content Include="Views\Carreras\Details.cshtml" />
     <Content Include="Views\Carreras\Edit.cshtml" />
     <Content Include="Views\Carreras\Index.cshtml" />
-    <Content Include="Views\Materias\Create.cshtml" />
-    <Content Include="Views\Materias\Delete.cshtml" />
-    <Content Include="Views\Materias\Details.cshtml" />
-    <Content Include="Views\Materias\Edit.cshtml" />
-    <Content Include="Views\Materias\Index.cshtml" />
+    <Content Include="Views\Home\Administradores.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -286,8 +284,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202207072311156_primeraMigracion.resx">
-      <DependentUpon>202207072311156_primeraMigracion.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202207132116215_primera.resx">
+      <DependentUpon>202207132116215_primera.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
