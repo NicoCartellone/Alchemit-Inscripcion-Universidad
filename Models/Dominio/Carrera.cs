@@ -10,5 +10,6 @@ namespace Inscripcion_Universidad.Models.Dominio
     {
         [Required]
         public string NombreCarrera { get; set; }
+        public virtual ICollection<Materia> Materia { get; set; }
     }
 }

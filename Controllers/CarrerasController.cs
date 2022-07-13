@@ -1,12 +1,13 @@
-﻿using Inscripcion_Universidad.Models;
-using Inscripcion_Universidad.Models.Dominio;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Inscripcion_Universidad.Models;
+using Inscripcion_Universidad.Models.Dominio;
 
 namespace Inscripcion_Universidad.Controllers
 {
@@ -20,28 +21,28 @@ namespace Inscripcion_Universidad.Controllers
             return View(db.Carreras.ToList());
         }
 
-        //GET: Carrera Details
+        // GET: Carreras/Details/5
         public ActionResult Details(Guid? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Carrera carrera = db.Carreras.Find(id);
-            if(carrera == null)
+            if (carrera == null)
             {
                 return HttpNotFound();
             }
             return View(carrera);
         }
 
-        //GET: Carrera Create
+        // GET: Carreras/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        //POST: Carrera Create
+        // POST: Carreras/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,NombreCarrera")] Carrera carrera)
@@ -53,28 +54,29 @@ namespace Inscripcion_Universidad.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             return View(carrera);
         }
 
-        //GET: Carrera Edit
+        // GET: Carreras/Edit/5
         public ActionResult Edit(Guid? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Carrera carrera = db.Carreras.Find(id);
-            if(carrera == null)
+            if (carrera == null)
             {
                 return HttpNotFound();
             }
             return View(carrera);
         }
 
-        //POST: Carrera Edit
+        // POST: Carreras/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,NombreCarrera")]Carrera carrera)
+        public ActionResult Edit([Bind(Include = "Id,NombreCarrera")] Carrera carrera)
         {
             if (ModelState.IsValid)
             {
@@ -85,25 +87,25 @@ namespace Inscripcion_Universidad.Controllers
             return View(carrera);
         }
 
-        //GET: Carrera Delete
+        // GET: Carreras/Delete/5
         public ActionResult Delete(Guid? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Carrera carrera = db.Carreras.Find(id);
-            if(carrera == null)
+            if (carrera == null)
             {
                 return HttpNotFound();
             }
             return View(carrera);
         }
 
-        //POST: Carrera Delete
-        [HttpPost]
+        // POST: Carreras/Delete/5
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(Guid id)
+        public ActionResult DeleteConfirmed(Guid id)
         {
             Carrera carrera = db.Carreras.Find(id);
             db.Carreras.Remove(carrera);

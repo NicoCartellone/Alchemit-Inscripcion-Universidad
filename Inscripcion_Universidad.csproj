@@ -195,6 +195,7 @@
     <Compile Include="Models\ViewModels\Roles\RolesByUser.cs" />
     <Compile Include="Models\ViewModels\Roles\RoleUserExist.cs" />
     <Compile Include="Models\ViewModels\Roles\UserRolesViewData.cs" />
+    <Compile Include="Permisos\ValidarSesionAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -255,14 +256,18 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\ManageRoles\CreateRole.cshtml" />
+    <Content Include="Views\ManageRoles\AssignUserRoles.cshtml" />
+    <Content Include="Views\ManageRoles\UsersRoles.cshtml" />
+    <Content Include="Views\Carreras\Create.cshtml" />
+    <Content Include="Views\Carreras\Delete.cshtml" />
+    <Content Include="Views\Carreras\Details.cshtml" />
+    <Content Include="Views\Carreras\Edit.cshtml" />
+    <Content Include="Views\Carreras\Index.cshtml" />
     <Content Include="Views\Materias\Create.cshtml" />
     <Content Include="Views\Materias\Delete.cshtml" />
     <Content Include="Views\Materias\Details.cshtml" />
     <Content Include="Views\Materias\Edit.cshtml" />
     <Content Include="Views\Materias\Index.cshtml" />
-    <Content Include="Views\Carreras\Index.cshtml" />
-    <Content Include="Views\ManageRoles\AssignUserRoles.cshtml" />
-    <Content Include="Views\ManageRoles\UsersRoles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

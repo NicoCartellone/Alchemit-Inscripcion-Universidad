@@ -79,6 +79,7 @@ namespace Inscripcion_Universidad.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    Session["result"] = result;
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -392,6 +393,7 @@ namespace Inscripcion_Universidad.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            Session["result"] = null;
             return RedirectToAction("Index", "Home");
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Inscripcion_Universidad.Permisos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,6 +7,7 @@ using System.Web.Mvc;
 
 namespace Inscripcion_Universidad.Controllers
 {
+    [ValidarSesion]
     public class HomeController : Controller
     {
         public ActionResult Index()

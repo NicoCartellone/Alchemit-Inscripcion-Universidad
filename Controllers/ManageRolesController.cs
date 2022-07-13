@@ -1,5 +1,6 @@
 ﻿using Inscripcion_Universidad.Models;
 using Inscripcion_Universidad.Models.ViewModels;
+using Inscripcion_Universidad.Permisos;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;
@@ -12,6 +13,7 @@ using System.Web.Mvc;
 
 namespace Inscripcion_Universidad.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class ManageRolesController : Controller
     {
         ApplicationDbContext context;
