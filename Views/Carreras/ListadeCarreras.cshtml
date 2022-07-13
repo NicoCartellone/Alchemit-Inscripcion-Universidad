@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Inscripcion_Universidad.Models.Dominio.Carrera>
+@{
+    ViewBag.Title = "Lista de Carreras";
+}
+
+<h2>Lista de Carreras</h2>
+<br />
+<p> Estas son las carreras que la Universidad ofrece.</p>
+
+<table class="table">
+    <tr>
+        <th>
+            Nombre de la carrera
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCarrera)
+            </td>
+        </tr>
+    }
+
+</table>

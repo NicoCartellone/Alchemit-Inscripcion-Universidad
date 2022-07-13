@@ -15,12 +15,18 @@ namespace Inscripcion_Universidad.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Carreras
+        // GET: Carreras (Lo que ve el Admin)
         public ActionResult Index()
         {
             return View(db.Carreras.ToList());
         }
-        
+
+        // GET: Lista Carreras (Lo que ve el estudiante)
+        public ActionResult ListadeCarreras()
+        {
+            return View(db.Carreras.ToList());
+        }
+
 
 
         // GET: Carreras/Details/5
