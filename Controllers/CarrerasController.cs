@@ -62,6 +62,7 @@ namespace Inscripcion_Universidad.Controllers
             return View(carrera);
         }
 
+        #region Editar
         // GET: Carreras/Edit/5
         public ActionResult Edit(Guid? id)
         {
@@ -93,7 +94,10 @@ namespace Inscripcion_Universidad.Controllers
             return View(carrera);
         }
 
-        public ActionResult Delete(int? id)
+        #endregion
+
+        //GET: DeleteCarrera
+        public ActionResult Delete(Guid? id)
         {
             if (id == null)
             {
@@ -107,10 +111,10 @@ namespace Inscripcion_Universidad.Controllers
             return View(Carrera);
         }
 
-        //POST: Delete materia
+        //POST: Delete Carrera
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(Guid id)
         {
             Carrera Carrera = db.Carreras.Find(id);
             db.Carreras.Remove(Carrera);
