@@ -45,7 +45,7 @@ namespace Inscripcion_Universidad.Controllers
             return View(estudiante);
         }
 
-        // GET: Estudiantes/Inscribirsr
+        // GET: Estudiantes/Inscribirse
         public ActionResult Inscribirse()
         {
 

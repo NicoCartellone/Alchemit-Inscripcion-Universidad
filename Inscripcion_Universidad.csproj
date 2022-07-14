@@ -189,6 +189,10 @@
     <Compile Include="Migrations\202207140201451_EstudianteFix2.Designer.cs">
       <DependentUpon>202207140201451_EstudianteFix2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202207140234466_FinalFixBD.cs" />
+    <Compile Include="Migrations\202207140234466_FinalFixBD.Designer.cs">
+      <DependentUpon>202207140234466_FinalFixBD.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Dominio\Carrera.cs" />
@@ -300,6 +304,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202207140201451_EstudianteFix2.resx">
       <DependentUpon>202207140201451_EstudianteFix2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207140234466_FinalFixBD.resx">
+      <DependentUpon>202207140234466_FinalFixBD.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
