@@ -48,6 +48,7 @@ namespace Inscripcion_Universidad.Controllers
         // GET: Estudiantes/Inscribirsr
         public ActionResult Inscribirse()
         {
+
             ViewBag.Carrera= new SelectList(db.Carreras, "Id", "NombreCarrera");
             return View();
         }
@@ -55,17 +56,19 @@ namespace Inscripcion_Universidad.Controllers
         // POST: Estudiantes/Inscribirse
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Inscribirse([Bind(Include = "Id,Nombre,Apellido,IdCarrera")] Estudiante estudiante)
+        public ActionResult Inscribirse([Bind(Include = "Id,Nombre,Apellido,Carrera_Id")] Estudiante estudiante)
         {
             if (ModelState.IsValid)
             {
                 estudiante.Id = Guid.NewGuid();
                 db.Estudiantes.Add(estudiante);
                 db.SaveChanges();
+  
                 return RedirectToAction("Index");
-            }
 
-            ViewBag.Carrera = new SelectList(db.Carreras, "Id", "NombreCarrera",estudiante.Id);
+
+            }
+            ViewBag.Carrera = new SelectList(db.Carreras, "Id", "NombreCarrera", estudiante.Id);
 
             return View(estudiante);
         }

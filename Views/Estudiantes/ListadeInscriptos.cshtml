@@ -6,7 +6,7 @@
 
 <h2>ListadeInscriptos</h2>
 
-p>
+
 <table class="table">
     <tr>
         <th>
@@ -16,7 +16,7 @@ p>
             @Html.DisplayNameFor(model => model.Apellido)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IdCarrera)
+            @Html.DisplayNameFor(model => model.Carrera.NombreCarrera)
         </th>
         <th></th>
     </tr>
@@ -30,7 +30,7 @@ p>
             @Html.DisplayFor(modelItem => item.Apellido)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IdCarrera)
+            @Html.DisplayFor(modelItem => item.Carrera.NombreCarrera)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

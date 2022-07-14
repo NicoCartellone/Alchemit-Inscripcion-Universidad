@@ -181,6 +181,14 @@
     <Compile Include="Migrations\202207132137398_PrimeraMigracion.Designer.cs">
       <DependentUpon>202207132137398_PrimeraMigracion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202207140158309_EstudianteFix.cs" />
+    <Compile Include="Migrations\202207140158309_EstudianteFix.Designer.cs">
+      <DependentUpon>202207140158309_EstudianteFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207140201451_EstudianteFix2.cs" />
+    <Compile Include="Migrations\202207140201451_EstudianteFix2.Designer.cs">
+      <DependentUpon>202207140201451_EstudianteFix2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Dominio\Carrera.cs" />
@@ -265,6 +273,7 @@
     <Content Include="Views\Carreras\ListadeCarreras.cshtml" />
     <Content Include="Views\Materia\Create.cshtml" />
     <Content Include="Views\Estudiantes\ListadeInscriptos.cshtml" />
+    <Content Include="Views\Estudiantes\Solicitudes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -285,6 +294,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202207132137398_PrimeraMigracion.resx">
       <DependentUpon>202207132137398_PrimeraMigracion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207140158309_EstudianteFix.resx">
+      <DependentUpon>202207140158309_EstudianteFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207140201451_EstudianteFix2.resx">
+      <DependentUpon>202207140201451_EstudianteFix2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
