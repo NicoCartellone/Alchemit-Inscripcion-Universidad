@@ -19,7 +19,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Materia, "Materia", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(m => m.IdMateria, ViewBag.Materias as SelectList, htmlAttributes: new { @class = "form-control" });
+                @Html.DropDownListFor(m => m.IdMateria, ViewBag.Materias as SelectList, htmlAttributes: new { @class =
+            "form-control" });
                 @Html.ValidationMessageFor(model => model.Materia, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -53,6 +54,5 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/jqueryval")
 }
-
