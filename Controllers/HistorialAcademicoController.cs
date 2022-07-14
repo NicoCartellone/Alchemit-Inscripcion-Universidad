@@ -38,6 +38,7 @@ namespace Inscripcion_Universidad.Controllers
 
             return View(historial);
         }
+
         public ActionResult Editar(int id)
         { 
             ViewModelsHistorial model = new ViewModelsHistorial();
@@ -63,10 +64,12 @@ namespace Inscripcion_Universidad.Controllers
                 _context.Entry(historialView).State = System.Data.Entity.EntityState.Modified;
                 _context.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "HistorialAcademico");
             }
             return View(historial);
         }
+
+        [HttpGet]
         public ActionResult Eliminar(int id)
         {
             var historial = _context.HistorialesAcademicos.Find(id);
@@ -75,7 +78,7 @@ namespace Inscripcion_Universidad.Controllers
 
             _context.HistorialesAcademicos.Remove(historial);
             _context.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "HistorialAcademico");
         }
     }
 }
