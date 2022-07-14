@@ -22,6 +22,11 @@ namespace Inscripcion_Universidad.Controllers
             return View();
         }
 
+        public ActionResult Solicitudes()
+        {
+            return View();
+        }
+
         public ActionResult ListadeInscriptos()
         {
             return View(db.Estudiantes.ToList());

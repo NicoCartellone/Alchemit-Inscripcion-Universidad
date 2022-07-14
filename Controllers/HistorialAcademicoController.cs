@@ -1,6 +1,7 @@
 ﻿using Inscripcion_Universidad.Models;
 using Inscripcion_Universidad.Models.Dominio;
 using Inscripcion_Universidad.Models.ViewModels.HistorialAcademico;
+using Rotativa;
 using System;
 using System.Linq;
 using System.Web.Mvc;

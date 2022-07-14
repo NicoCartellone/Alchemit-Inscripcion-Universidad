@@ -15,8 +15,8 @@ namespace Inscripcion_Universidad.Controllers
             return View();
         }
 
-        //[ValidarSesion]
-        //[Authorize(Roles = "Estudiante")]
+        [ValidarSesion]
+        [Authorize(Roles = "Estudiante")]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -24,8 +24,8 @@ namespace Inscripcion_Universidad.Controllers
             return View();
         }
 
-        //[ValidarSesion]
-        //[Authorize(Roles = "Profesor")]
+        [ValidarSesion]
+        [Authorize(Roles = "Profesor")]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -33,8 +33,8 @@ namespace Inscripcion_Universidad.Controllers
             return View();
         }
 
-        //[ValidarSesion]
-        //[Authorize(Roles = "Admin")]
+        [ValidarSesion]
+        [Authorize(Roles = "Admin")]
         public ActionResult Administradores()
         {
    
