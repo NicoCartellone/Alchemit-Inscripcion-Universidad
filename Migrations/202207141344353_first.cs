@@ -3,7 +3,7 @@ namespace Inscripcion_Universidad.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class primera : DbMigration
+    public partial class first : DbMigration
     {
         public override void Up()
         {
@@ -22,8 +22,6 @@ namespace Inscripcion_Universidad.Migrations
                     {
                         Id = c.Guid(nullable: false),
                         NombreMateria = c.String(nullable: false),
-                        IdCarrera = c.Guid(nullable: false),
-                        Semestre = c.Boolean(nullable: false),
                         Carrera_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
@@ -35,25 +33,15 @@ namespace Inscripcion_Universidad.Migrations
                 c => new
                     {
                         Id = c.Guid(nullable: false),
-                        IdCarrera = c.Guid(nullable: false),
-                        IdMateria = c.Guid(nullable: false),
-                        IdPrimeraCorrelativa = c.Guid(nullable: false),
-                        IdSegundaCorrelativa = c.Guid(nullable: false),
-                        Carrera_Id = c.Guid(),
                         Materia_Id = c.Guid(),
-                        Correlativa_Id = c.Guid(),
                         PrimeraCorrelativa_Id = c.Guid(),
                         SegundaCorrelativa_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Carreras", t => t.Carrera_Id)
                 .ForeignKey("dbo.Materias", t => t.Materia_Id)
-                .ForeignKey("dbo.Correlativas", t => t.Correlativa_Id)
                 .ForeignKey("dbo.Correlativas", t => t.PrimeraCorrelativa_Id)
                 .ForeignKey("dbo.Correlativas", t => t.SegundaCorrelativa_Id)
-                .Index(t => t.Carrera_Id)
                 .Index(t => t.Materia_Id)
-                .Index(t => t.Correlativa_Id)
                 .Index(t => t.PrimeraCorrelativa_Id)
                 .Index(t => t.SegundaCorrelativa_Id);
             
@@ -63,12 +51,8 @@ namespace Inscripcion_Universidad.Migrations
                     {
                         Id = c.Guid(nullable: false),
                         NombreCorrelativa = c.String(nullable: false),
-                        IdCarrera = c.Guid(nullable: false),
-                        Carrera_Id = c.Guid(),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Carreras", t => t.Carrera_Id)
-                .Index(t => t.Carrera_Id);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.Estudiantes",
@@ -77,28 +61,24 @@ namespace Inscripcion_Universidad.Migrations
                         Id = c.Guid(nullable: false),
                         Nombre = c.String(nullable: false),
                         Apellido = c.String(nullable: false),
-                        IdCarrera = c.Guid(nullable: false),
-                        IdMateria = c.Guid(nullable: false),
                         Carrera_Id = c.Guid(),
-                        Materia_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Carreras", t => t.Carrera_Id)
-                .ForeignKey("dbo.Materias", t => t.Materia_Id)
-                .Index(t => t.Carrera_Id)
-                .Index(t => t.Materia_Id);
+                .Index(t => t.Carrera_Id);
             
             CreateTable(
-                "dbo.MateriasViewModels",
+                "dbo.HistorialAcademicoes",
                 c => new
                     {
                         Id = c.Guid(nullable: false),
-                        NombreMateria = c.String(),
-                        Semestre = c.Boolean(nullable: false),
-                        IdCarrera = c.Guid(nullable: false),
-                        NombreCarrera = c.String(),
+                        IdMateria = c.Guid(),
+                        FechaExamen = c.DateTime(nullable: false),
+                        Nota = c.Decimal(nullable: false, precision: 18, scale: 2),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Materias", t => t.IdMateria)
+                .Index(t => t.IdMateria);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -176,14 +156,11 @@ namespace Inscripcion_Universidad.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Estudiantes", "Materia_Id", "dbo.Materias");
+            DropForeignKey("dbo.HistorialAcademicoes", "IdMateria", "dbo.Materias");
             DropForeignKey("dbo.Estudiantes", "Carrera_Id", "dbo.Carreras");
             DropForeignKey("dbo.MateriaPorCorrelativas", "SegundaCorrelativa_Id", "dbo.Correlativas");
             DropForeignKey("dbo.MateriaPorCorrelativas", "PrimeraCorrelativa_Id", "dbo.Correlativas");
-            DropForeignKey("dbo.MateriaPorCorrelativas", "Correlativa_Id", "dbo.Correlativas");
-            DropForeignKey("dbo.Correlativas", "Carrera_Id", "dbo.Carreras");
             DropForeignKey("dbo.MateriaPorCorrelativas", "Materia_Id", "dbo.Materias");
-            DropForeignKey("dbo.MateriaPorCorrelativas", "Carrera_Id", "dbo.Carreras");
             DropForeignKey("dbo.Materias", "Carrera_Id", "dbo.Carreras");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
@@ -191,21 +168,18 @@ namespace Inscripcion_Universidad.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Estudiantes", new[] { "Materia_Id" });
+            DropIndex("dbo.HistorialAcademicoes", new[] { "IdMateria" });
             DropIndex("dbo.Estudiantes", new[] { "Carrera_Id" });
-            DropIndex("dbo.Correlativas", new[] { "Carrera_Id" });
             DropIndex("dbo.MateriaPorCorrelativas", new[] { "SegundaCorrelativa_Id" });
             DropIndex("dbo.MateriaPorCorrelativas", new[] { "PrimeraCorrelativa_Id" });
-            DropIndex("dbo.MateriaPorCorrelativas", new[] { "Correlativa_Id" });
             DropIndex("dbo.MateriaPorCorrelativas", new[] { "Materia_Id" });
-            DropIndex("dbo.MateriaPorCorrelativas", new[] { "Carrera_Id" });
             DropIndex("dbo.Materias", new[] { "Carrera_Id" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.MateriasViewModels");
+            DropTable("dbo.HistorialAcademicoes");
             DropTable("dbo.Estudiantes");
             DropTable("dbo.Correlativas");
             DropTable("dbo.MateriaPorCorrelativas");

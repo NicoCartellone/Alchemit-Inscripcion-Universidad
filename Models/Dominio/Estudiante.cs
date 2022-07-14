@@ -19,5 +19,13 @@ namespace Inscripcion_Universidad.Models.Dominio
 
         public Guid? Carrera_Id { get; set; }
 
+        [ForeignKey("Materia_Id")]
+        public virtual Materia Materia { get; set; }
+        public Guid? Materia_Id { get; set; }
+
+        [ForeignKey("HistorialAcademico_Id")]
+        public virtual HistorialAcademico HistorialAcademico { get; set; }
+        public Guid? HistorialAcademico_Id { get; set; }
+
     }
 }

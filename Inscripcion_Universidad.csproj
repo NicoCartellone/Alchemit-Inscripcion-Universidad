@@ -169,28 +169,36 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CarrerasController.cs" />
+    <Compile Include="Controllers\CorrelativasController.cs" />
     <Compile Include="Controllers\EstudiantesController.cs" />
+    <Compile Include="Controllers\HistorialAcademicoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ManageRolesController.cs" />
+    <Compile Include="Controllers\MateriaController.cs" />
+    <Compile Include="Controllers\MateriaPorCorrelativasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202207132116215_primera.cs" />
-    <Compile Include="Migrations\202207132116215_primera.Designer.cs">
-      <DependentUpon>202207132116215_primera.cs</DependentUpon>
+    <Compile Include="Migrations\202207141344353_first.cs" />
+    <Compile Include="Migrations\202207141344353_first.Designer.cs">
+      <DependentUpon>202207141344353_first.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202207140235167_fix.cs" />
-    <Compile Include="Migrations\202207140235167_fix.Designer.cs">
-      <DependentUpon>202207140235167_fix.cs</DependentUpon>
+    <Compile Include="Migrations\202207141420539_fix.cs" />
+    <Compile Include="Migrations\202207141420539_fix.Designer.cs">
+      <DependentUpon>202207141420539_fix.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202207140318058_fix2.cs" />
-    <Compile Include="Migrations\202207140318058_fix2.Designer.cs">
-      <DependentUpon>202207140318058_fix2.cs</DependentUpon>
+    <Compile Include="Migrations\202207141431028_fix1.cs" />
+    <Compile Include="Migrations\202207141431028_fix1.Designer.cs">
+      <DependentUpon>202207141431028_fix1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202207140320562_fix3.cs" />
-    <Compile Include="Migrations\202207140320562_fix3.Designer.cs">
-      <DependentUpon>202207140320562_fix3.cs</DependentUpon>
+    <Compile Include="Migrations\202207141434224_fix11.cs" />
+    <Compile Include="Migrations\202207141434224_fix11.Designer.cs">
+      <DependentUpon>202207141434224_fix11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207141515296_fix2.cs" />
+    <Compile Include="Migrations\202207141515296_fix2.Designer.cs">
+      <DependentUpon>202207141515296_fix2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -206,7 +214,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ViewModels\Carreras\CarrerasListaViewModel.cs" />
     <Compile Include="Models\ViewModels\Carreras\CarrerasViewModel.cs" />
-    <Compile Include="Models\ViewModels\Materias\MateriasViewModel.cs" />
+    <Compile Include="Models\ViewModels\HistorialAcademico\ViewModelsHistorial.cs" />
     <Compile Include="Models\ViewModels\Roles\AssignRolesUsersViewData.cs" />
     <Compile Include="Models\ViewModels\Roles\RolesByUser.cs" />
     <Compile Include="Models\ViewModels\Roles\RoleUserExist.cs" />
@@ -284,8 +292,23 @@
     <Content Include="Views\Estudiantes\ListadeInscriptos.cshtml" />
     <Content Include="Views\Estudiantes\Details.cshtml" />
     <Content Include="Views\Estudiantes\Inscribirse.cshtml" />
-    <Content Include="Views\Estudiantes\Edit.cshtml" />
     <Content Include="Views\Estudiantes\Delete.cshtml" />
+    <Content Include="Views\Materia\Index.cshtml" />
+    <Content Include="Views\Materia\Create.cshtml" />
+    <Content Include="Views\Materia\Delete.cshtml" />
+    <Content Include="Views\Correlativas\Create.cshtml" />
+    <Content Include="Views\Correlativas\Delete.cshtml" />
+    <Content Include="Views\Correlativas\Details.cshtml" />
+    <Content Include="Views\Correlativas\Edit.cshtml" />
+    <Content Include="Views\Correlativas\Index.cshtml" />
+    <Content Include="Views\MateriaPorCorrelativas\Create.cshtml" />
+    <Content Include="Views\MateriaPorCorrelativas\Delete.cshtml" />
+    <Content Include="Views\MateriaPorCorrelativas\Index.cshtml" />
+    <Content Include="Views\Estudiantes\InscribirseMateria.cshtml" />
+    <Content Include="Views\Estudiantes\ListaDeInscripciones.cshtml" />
+    <Content Include="Views\HistorialAcademico\Index.cshtml" />
+    <Content Include="Views\HistorialAcademico\Create.cshtml" />
+    <Content Include="Views\HistorialAcademico\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -304,17 +327,20 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202207132116215_primera.resx">
-      <DependentUpon>202207132116215_primera.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202207141344353_first.resx">
+      <DependentUpon>202207141344353_first.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202207140235167_fix.resx">
-      <DependentUpon>202207140235167_fix.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202207141420539_fix.resx">
+      <DependentUpon>202207141420539_fix.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202207140318058_fix2.resx">
-      <DependentUpon>202207140318058_fix2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202207141431028_fix1.resx">
+      <DependentUpon>202207141431028_fix1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202207140320562_fix3.resx">
-      <DependentUpon>202207140320562_fix3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202207141434224_fix11.resx">
+      <DependentUpon>202207141434224_fix11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207141515296_fix2.resx">
+      <DependentUpon>202207141515296_fix2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

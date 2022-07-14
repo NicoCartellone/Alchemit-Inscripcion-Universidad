@@ -3,7 +3,7 @@ namespace Inscripcion_Universidad.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class fix2 : DbMigration
+    public partial class fix1 : DbMigration
     {
         public override void Up()
         {

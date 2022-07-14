@@ -1,0 +1,55 @@
+﻿@model Inscripcion_Universidad.Models.Dominio.Estudiante
+
+@{
+    ViewBag.Title = "Inscribirse";
+}
+
+<h2>Inscribirse a una carrera</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+<div class="form-horizontal">
+    <h4>Estudiante: inscripción a materia</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Materia, "Materia", htmlAttributes: new { @class = "control-label col-md-2" })
+
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.Materia_Id, ViewBag.Materia as SelectList, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Materia, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Id, "Estudiante", htmlAttributes: new { @class = "control-label col-md-2" })
+
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.Id, ViewBag.Estudiante as SelectList, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Inscribirse" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

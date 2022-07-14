@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Inscripcion_Universidad.Models.Dominio.HistorialAcademico>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p class="btn btn-primary">
+    @Html.ActionLink("Agregar", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Materia.NombreMateria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaExamen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nota)
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Materia.NombreMateria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaExamen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nota)
+            </td>
+            <td>
+                <a class="btn btn-default" href="~/Views/HistorialAcademico/Editar/@item.Id">Editar</a>
+                <a class="btn btn-danger" href="~/Views/HistorialAcademico/Eliminar/@item.Id">Eliminar</a>
+            </td>
+        </tr>
+    }
+
+</table>

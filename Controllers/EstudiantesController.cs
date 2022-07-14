@@ -27,7 +27,10 @@ namespace Inscripcion_Universidad.Controllers
             return View(db.Estudiantes.ToList());
         }
 
-
+        public ActionResult ListadeInscripciones()
+        {
+            return View(db.InscripcionesMaterias.ToList());
+        }
 
 
         // GET: Estudiantes/Details/5
@@ -73,35 +76,34 @@ namespace Inscripcion_Universidad.Controllers
             return View(estudiante);
         }
 
-        // GET: Estudiantes/Edit/5
-        public ActionResult Edit(Guid? id)
+        //GET: Estudiantes/InscribirseMateria
+        public ActionResult InscribirseMateria()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Estudiante estudiante = db.Estudiantes.Find(id);
-            if (estudiante == null)
-            {
-                return HttpNotFound();
-            }
-            return View(estudiante);
+
+            ViewBag.Materia = new SelectList(db.Materias, "Id", "NombreMateria");
+            ViewBag.Estudiante = new SelectList(db.Estudiantes, "Id", "Apellido");
+            return View();
         }
 
-        // POST: Estudiantes/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
-        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Estudiantes/InscribirseMateria
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre,Apellido,IdCarrera,IdMateria")] Estudiante estudiante)
+        public ActionResult InscribirseMateria([Bind(Include = "Materia_Id, Estudiante_Id")] InscripcionMateria InscripcionMateria)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(estudiante).State = EntityState.Modified;
+                InscripcionMateria.Id = Guid.NewGuid();
+                db.InscripcionesMaterias.Add(InscripcionMateria);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                return RedirectToAction("About", "Home");
+
+
             }
-            return View(estudiante);
+            ViewBag.Materia = new SelectList(db.Materias, "Id", "NombreMateria", InscripcionMateria.Id);
+            ViewBag.Estudiante = new SelectList(db.Materias, "Id", "Apellido", InscripcionMateria.Id);
+
+            return View(InscripcionMateria);
         }
 
         // GET: Estudiantes/Delete/5

@@ -13,7 +13,7 @@ using System.Web.Mvc;
 
 namespace Inscripcion_Universidad.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    //[Authorize(Roles ="Admin")]
     public class ManageRolesController : Controller
     {
         ApplicationDbContext context;
