@@ -26,23 +26,21 @@
         </th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Materia.NombreMateria)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaExamen)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nota)
-            </td>
-            <td>
-                <a class="btn btn-default" href="~/Views/HistorialAcademico/Editar/@item.Id">Editar</a>
-                <a class="btn btn-danger" href="~/Views/HistorialAcademico/Eliminar/@item.Id">Eliminar</a>
-            </td>
-        </tr>
-    }
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Materia.NombreMateria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaExamen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nota)
+        </td>
+        <td>
+            <a class="btn btn-default" href="~/Views/HistorialAcademico/Editar/@item.Id">Editar</a>
+            <a class="btn btn-danger" href="~/Views/HistorialAcademico/Eliminar/@item.Id">Eliminar</a>
+        </td>
+    </tr>
+}
 
 </table>

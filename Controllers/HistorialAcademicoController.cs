@@ -17,13 +17,13 @@ namespace Inscripcion_Universidad.Controllers
             return View(listaHistorial);
         }
 
-        public ActionResult Create()
+        public ActionResult Create() 
         {
             ViewBag.Materias = new SelectList(_context.Materias, "Id", "NombreMateria");
             return View();
         }
         [HttpPost]
-        public ActionResult Create([Bind(Include = "Id,IdMateria, FechaExamen, Nota")] HistorialAcademico historial)
+        public ActionResult Create([Bind(Include = "Id,IdMateria, FechaExamen, Nota")] HistorialAcademico historial) 
         {
 
             if (ModelState.IsValid)
@@ -40,14 +40,12 @@ namespace Inscripcion_Universidad.Controllers
         }
 
         public ActionResult Editar(int id)
-        {
+        { 
             ViewModelsHistorial model = new ViewModelsHistorial();
             var historialAcademico = _context.HistorialesAcademicos.Find(id);
             model.Id = historialAcademico.Id;
             model.IdMateria = historialAcademico.IdMateria;
             model.Materia = historialAcademico.Materia;
-            model.FechaExamen = historialAcademico.FechaExamen;
-            model.Nota = historialAcademico.Nota;
             return View(model);
         }
         [HttpPost]
