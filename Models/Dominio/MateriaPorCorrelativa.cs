@@ -7,10 +7,10 @@ namespace Inscripcion_Universidad.Models.Dominio
 {
     public class MateriaPorCorrelativa : EntityBase
     {
-        public int IdCarrera { get; set; }
-        public int IdMateria { get; set; }
-        public int IdPrimeraCorrelativa { get; set; }
-        public int IdSegundaCorrelativa { get; set; }
+        public Guid IdCarrera { get; set; }
+        public Guid IdMateria { get; set; }
+        public Guid IdPrimeraCorrelativa { get; set; }
+        public Guid IdSegundaCorrelativa { get; set; }
 
         public virtual Carrera Carrera { get; set; }
         public virtual Materia Materia { get; set; }

@@ -40,7 +40,7 @@ namespace Inscripcion_Universidad.Controllers
         }
 
         //GET: Edit materia
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(Guid? id)
         {
             if (id == null)
             {
@@ -69,7 +69,7 @@ namespace Inscripcion_Universidad.Controllers
         }
 
         //GET: Delete materia
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(Guid? id)
         {
             if (id == null)
             {
@@ -86,7 +86,7 @@ namespace Inscripcion_Universidad.Controllers
         //POST: Delete materia
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(Guid id)
         {
             Materia Materia = db.Materias.Find(id);
             db.Materias.Remove(Materia);

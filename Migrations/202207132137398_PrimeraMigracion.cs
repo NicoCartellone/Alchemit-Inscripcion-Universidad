@@ -3,7 +3,7 @@ namespace Inscripcion_Universidad.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class PrimeraMigracion : DbMigration
     {
         public override void Up()
         {
@@ -22,7 +22,7 @@ namespace Inscripcion_Universidad.Migrations
                     {
                         Id = c.Guid(nullable: false),
                         NombreCorrelativa = c.String(nullable: false),
-                        IdCarrera = c.Int(nullable: false),
+                        IdCarrera = c.Guid(nullable: false),
                         Carrera_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
@@ -34,10 +34,10 @@ namespace Inscripcion_Universidad.Migrations
                 c => new
                     {
                         Id = c.Guid(nullable: false),
-                        IdCarrera = c.Int(nullable: false),
-                        IdMateria = c.Int(nullable: false),
-                        IdPrimeraCorrelativa = c.Int(nullable: false),
-                        IdSegundaCorrelativa = c.Int(nullable: false),
+                        IdCarrera = c.Guid(nullable: false),
+                        IdMateria = c.Guid(nullable: false),
+                        IdPrimeraCorrelativa = c.Guid(nullable: false),
+                        IdSegundaCorrelativa = c.Guid(nullable: false),
                         Carrera_Id = c.Guid(),
                         Materia_Id = c.Guid(),
                         PrimeraCorrelativa_Id = c.Guid(),
@@ -62,7 +62,7 @@ namespace Inscripcion_Universidad.Migrations
                     {
                         Id = c.Guid(nullable: false),
                         NombreMateria = c.String(nullable: false),
-                        IdCarrera = c.Int(nullable: false),
+                        IdCarrera = c.Guid(nullable: false),
                         Semestre = c.Boolean(nullable: false),
                         Carrera_Id = c.Guid(),
                     })
@@ -77,16 +77,12 @@ namespace Inscripcion_Universidad.Migrations
                         Id = c.Guid(nullable: false),
                         Nombre = c.String(nullable: false),
                         Apellido = c.String(nullable: false),
-                        IdCarrera = c.Int(nullable: false),
-                        IdMateria = c.Int(nullable: false),
+                        IdCarrera = c.Guid(nullable: false),
                         Carrera_Id = c.Guid(),
-                        Materia_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Carreras", t => t.Carrera_Id)
-                .ForeignKey("dbo.Materias", t => t.Materia_Id)
-                .Index(t => t.Carrera_Id)
-                .Index(t => t.Materia_Id);
+                .Index(t => t.Carrera_Id);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -164,7 +160,6 @@ namespace Inscripcion_Universidad.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Estudiantes", "Materia_Id", "dbo.Materias");
             DropForeignKey("dbo.Estudiantes", "Carrera_Id", "dbo.Carreras");
             DropForeignKey("dbo.MateriaPorCorrelativas", "Correlativa_Id", "dbo.Correlativas");
             DropForeignKey("dbo.MateriaPorCorrelativas", "SegundaCorrelativa_Id", "dbo.Correlativas");
@@ -179,7 +174,6 @@ namespace Inscripcion_Universidad.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Estudiantes", new[] { "Materia_Id" });
             DropIndex("dbo.Estudiantes", new[] { "Carrera_Id" });
             DropIndex("dbo.Materias", new[] { "Carrera_Id" });
             DropIndex("dbo.MateriaPorCorrelativas", new[] { "Correlativa_Id" });

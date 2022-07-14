@@ -32,27 +32,34 @@
         </div>
 
         <!-- El estudiante está en la BD una vez que se anota a una carrera, por lo tanto, al enviar el POST se genera el Id estudiante y debería aparecer en la tabla.-->
-        <div style =" align-content: center" class="form-group">
+
           
-                <label asp-for="Carrera" class="control-label">Carreras</label>
-                <select  asp-for="IdCarrera" name="IdCarrera">
-                    @foreach (var carrera in ViewBag.Carreras)
-                    {
-                        <option value="carrera.Id">@carrera.NombreCarrera</option>
-                    }
-                </select>
-
-           
-        </div>
-
-       
-
+               
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Inscribirse" class="btn btn-default" />
+            @Html.LabelFor(model => model.Carrera, "Carrera", htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DropDownList("Carrera", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Carrera, "", new { @class = "text-danger" })
             </div>
         </div>
-    </div>
+                <div class="form-group">
+                 
+                </div>
+
+
+
+
+
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Inscribirse" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
 }
 
 

@@ -7,13 +7,13 @@ namespace Inscripcion_Universidad.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class SegundaMigracion : IMigrationMetadata
+    public sealed partial class PrimeraMigracion : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(SegundaMigracion));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(PrimeraMigracion));
         
         string IMigrationMetadata.Id
         {
-            get { return "202207130041426_SegundaMigracion"; }
+            get { return "202207132137398_PrimeraMigracion"; }
         }
         
         string IMigrationMetadata.Source

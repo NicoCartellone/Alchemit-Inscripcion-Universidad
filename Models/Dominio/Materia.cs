@@ -10,7 +10,7 @@ namespace Inscripcion_Universidad.Models.Dominio
     {
         [Required]
         public string NombreMateria { get; set; }
-        public int IdCarrera { get; set; }
+        public  Guid IdCarrera { get; set; }
         [Required]
         public bool Semestre { get; set; }
         public virtual Carrera Carrera { get; set; }
