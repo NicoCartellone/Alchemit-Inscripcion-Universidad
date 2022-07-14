@@ -36,14 +36,14 @@ namespace Inscripcion_Universidad.Models.ViewModels.Materias
 
         #region Metodos
 
-        //public Carrera ToEntity()
-        //{
-        //    return new Carrera
-        //    {
-        //        Id = Guid.NewGuid(),
-        //        NombreCarrera = this.NombreCarrera,
-        //    };
-        //}
+        public Carrera ToEntity()
+        {
+            return new Carrera
+            {
+                Id = Guid.NewGuid(),
+                NombreCarrera = this.NombreCarrera,
+            };
+        }
 
         public Materia ToEntity(Carrera carrera)
         {
@@ -51,7 +51,7 @@ namespace Inscripcion_Universidad.Models.ViewModels.Materias
             {
                 Id = Guid.NewGuid(),
                 NombreMateria = this.NombreMateria,
-                IdCarrera = carrera.Id,
+                Carrera_Id = carrera.Id,
             };
         }
 

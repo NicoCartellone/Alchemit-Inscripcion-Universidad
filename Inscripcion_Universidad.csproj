@@ -169,6 +169,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CarrerasController.cs" />
+    <Compile Include="Controllers\EstudiantesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ManageRolesController.cs" />
@@ -179,12 +180,26 @@
     <Compile Include="Migrations\202207132116215_primera.Designer.cs">
       <DependentUpon>202207132116215_primera.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202207140235167_fix.cs" />
+    <Compile Include="Migrations\202207140235167_fix.Designer.cs">
+      <DependentUpon>202207140235167_fix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207140318058_fix2.cs" />
+    <Compile Include="Migrations\202207140318058_fix2.Designer.cs">
+      <DependentUpon>202207140318058_fix2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207140320562_fix3.cs" />
+    <Compile Include="Migrations\202207140320562_fix3.Designer.cs">
+      <DependentUpon>202207140320562_fix3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Dominio\Carrera.cs" />
     <Compile Include="Models\Dominio\Correlativa.cs" />
     <Compile Include="Models\Dominio\EntityBase.cs" />
     <Compile Include="Models\Dominio\Estudiante.cs" />
+    <Compile Include="Models\Dominio\HistorialAcademico.cs" />
+    <Compile Include="Models\Dominio\InscripcionMateria.cs" />
     <Compile Include="Models\Dominio\Materia.cs" />
     <Compile Include="Models\Dominio\MateriaPorCorrelativa.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -266,6 +281,11 @@
     <Content Include="Views\Carreras\Edit.cshtml" />
     <Content Include="Views\Carreras\Index.cshtml" />
     <Content Include="Views\Home\Administradores.cshtml" />
+    <Content Include="Views\Estudiantes\ListadeInscriptos.cshtml" />
+    <Content Include="Views\Estudiantes\Details.cshtml" />
+    <Content Include="Views\Estudiantes\Inscribirse.cshtml" />
+    <Content Include="Views\Estudiantes\Edit.cshtml" />
+    <Content Include="Views\Estudiantes\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -286,6 +306,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202207132116215_primera.resx">
       <DependentUpon>202207132116215_primera.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207140235167_fix.resx">
+      <DependentUpon>202207140235167_fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207140318058_fix2.resx">
+      <DependentUpon>202207140318058_fix2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207140320562_fix3.resx">
+      <DependentUpon>202207140320562_fix3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

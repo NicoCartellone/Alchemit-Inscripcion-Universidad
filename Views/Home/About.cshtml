@@ -1,10 +1,22 @@
-﻿@{
-    ViewBag.Title = "Estudiantes";
+﻿@model IEnumerable<Inscripcion_Universidad.Models.Dominio.Estudiante>
+
+@{
+    ViewBag.Title = "Index";
 }
-<h2>@ViewBag.Title.</h2>
-<p><a href="#" class="btn btn-primary">Inscripción carrera</a></p>
-<p><a href="#" class="btn btn-primary">Inscripción a materias</a></p>
-<p><a href="#" class="btn btn-primary">Historial Academico</a></p>
-<p><a href="#" class="btn btn-primary">Certificados de materias</a></p>
+
+<h1>Bienvenido/a</h1>
+<br />
+
+<h2>Opciones disponibles:</h2>
+<br />
+
+
+<p><a href="@Url.Action("Inscribirse", "Estudiantes")" class="btn btn-primary">Inscribirse a una carrera</a></p>
+
+@*<p><a href="@Url.Action("Solicitudes", "Estudiantes")" class="btn btn-primary">Inscribirse a materia</a></p>*@
+
+<p><a href="@Url.Action("Solicitudes", "Estudiantes")" class="btn btn-primary">Solicitar un certificado</a></p>
+
+@*<p><a href="@Url.Action("Solicitudes", "Estudiantes")" class="btn btn-primary">Ver Historial Academico</a></p>*@
 
 
