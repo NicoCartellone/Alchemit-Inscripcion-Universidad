@@ -35,5 +35,7 @@ namespace Inscripcion_Universidad.Models
         public DbSet<Carrera> Carreras { get; set; }
         public DbSet<MateriaPorCorrelativa> MateriaPorCorrelativas { get; set; }
         public DbSet<Estudiante> Estudiantes { get; set; }
+
+        public DbSet<HistorialAcademico> HistorialesAcademicos { get; set; }
     }
 }

@@ -193,9 +193,14 @@
     <Compile Include="Migrations\202207140234466_FinalFixBD.Designer.cs">
       <DependentUpon>202207140234466_FinalFixBD.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202207140248070_FinalDB.cs" />
+    <Compile Include="Migrations\202207140248070_FinalDB.Designer.cs">
+      <DependentUpon>202207140248070_FinalDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Dominio\Carrera.cs" />
+    <Compile Include="Models\Dominio\HistorialAcademico.cs" />
     <Compile Include="Models\Dominio\Correlativa.cs" />
     <Compile Include="Models\Dominio\EntityBase.cs" />
     <Compile Include="Models\Dominio\Estudiante.cs" />
@@ -307,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202207140234466_FinalFixBD.resx">
       <DependentUpon>202207140234466_FinalFixBD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207140248070_FinalDB.resx">
+      <DependentUpon>202207140248070_FinalDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

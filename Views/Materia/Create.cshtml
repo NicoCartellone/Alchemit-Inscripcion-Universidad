@@ -23,17 +23,17 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdCarrera, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Carrera_Id, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.IdCarrera, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.IdCarrera, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Carrera_Id, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Carrera_Id, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Semestre, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <div class="checkbox">
+                <div class="col-md-10">
                     @Html.EditorFor(model => model.Semestre)
                     @Html.ValidationMessageFor(model => model.Semestre, "", new { @class = "text-danger" })
                 </div>
