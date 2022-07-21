@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Inscripcion_Universidad.Models.Dominio;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -29,5 +30,11 @@ namespace Inscripcion_Universidad.Models
         {
             return new ApplicationDbContext();
         }
+        public DbSet<Materia> Materias { get; set; }
+        public DbSet<Correlativa> Correlativas { get; set; }
+        public DbSet<Carrera> Carreras { get; set; }
+        public DbSet<Estudiante> Estudiantes { get; set; }
+        public DbSet<InscripcionMateria> InscripcionesMaterias { get; set; }
+        public DbSet<HistorialAcademico> HistorialesAcademicos { get; set; }
     }
 }
